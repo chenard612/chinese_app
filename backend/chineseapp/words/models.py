@@ -8,5 +8,7 @@ class Word(models.Model):
     revised = models.IntegerField(default=0)
     added = models.DateTimeField(default=None)
     definition = models.CharField(max_length=240, default="")
-    type = models.CharField(max_length=30, default="")
+    grammatical_type = models.CharField(max_length=30, default="")
+    pinyin = models.CharField(max_length=240, default="")
+    used_in_a_sentence = models.CharField(max_length=240, default="")
 
