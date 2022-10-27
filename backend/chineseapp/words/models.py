@@ -4,6 +4,7 @@ from django.db import models
 class Word(models.Model):
     english = models.CharField(max_length=120, default="")
     mandarin = models.CharField(max_length=40, default="")
+    arabic = models.CharField(max_length=40, default="")
     completed = models.BooleanField(default=False)
     revised = models.IntegerField(default=0)
     added = models.DateTimeField(default=None)

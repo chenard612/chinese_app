@@ -29,20 +29,25 @@ def translate_words():
     words = Word.objects.filter(mandarin='').order_by('?')[:500]
     for word in words:
         try:
-            payload = "q=" + word.english + "&target=zh-CN&source=en"
             headers = {
                 "content-type": "application/x-www-form-urlencoded",
                 "Accept-Encoding": "application/gzip",
                 "X-RapidAPI-Key": "a71537b9femsh6fd494e7ef321a6p1c7a8cjsn8c4b8ba2e8c3",
                 "X-RapidAPI-Host": "google-translate1.p.rapidapi.com"
             }
+            payload = "q=" + word.english + "&target=zh-CN&source=en"
             r = requests.post(url, data=payload, headers=headers)
             dic = r.json()
             trans = dic['data']['translations'][0]['translatedText']
             print('')
             word.mandarin = trans
+            payload = "q=" + word.english + "&target=ar&source=en"
+            r = requests.post(url, data=payload, headers=headers)
+            dic = r.json()
+            trans = dic['data']['translations'][0]['translatedText']
+            word.arabic = trans
             word.save()
-            print(word.english, ' ||| ', word.mandarin)
+            print(word.english, ' ||| ', word.mandarin, ' ||| ', word.arabic)
             time.sleep(5)
         except:
             print(word.english, 'did not work!')
