@@ -4,7 +4,6 @@ import Skip from './Skip'
 
 const Playground = () => {
     return <div>
-    <p>Playground</p>
     <Word />
     <AnswerForm />
     <Skip />
