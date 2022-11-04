@@ -6,7 +6,8 @@ import Footer from '../components/Footer/Footer'
 import Playground from '../components/Playground/Playground'
 
 
-export default function Home() {
+export default function Home(props) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +17,7 @@ export default function Home() {
       </Head>
       <NavBar />
       <main className={styles.main}>
-          <Playground />
+          <Playground word={props.word}/>
       </main>
       <Footer />
     </div>

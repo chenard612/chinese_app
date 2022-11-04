@@ -6,6 +6,7 @@ import requests
 import json
 from datetime import datetime
 import time
+from django.http import JsonResponse
 
 # Create your views here.
 def get_new_words():
@@ -56,3 +57,7 @@ def translate_words():
             except:
                 print('no response')
 
+def get_word(request, *args, **kwargs):
+    word = Word.objects.exclude(mandarin='').order_by("?").first()
+    print(word.mandarin)
+    return JsonResponse({'english':word.english, 'mandarin':word.mandarin})
