@@ -17,7 +17,7 @@ export default function Home(props) {
       </Head>
       <NavBar />
       <main className={styles.main}>
-          <Playground word={props.word}/>
+          <Playground />
       </main>
       <Footer />
     </div>

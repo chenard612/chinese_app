@@ -59,5 +59,10 @@ def translate_words():
 
 def get_word(request, *args, **kwargs):
     word = Word.objects.exclude(mandarin='').order_by("?").first()
-    print(word.mandarin)
-    return JsonResponse({'english':word.english, 'mandarin':word.mandarin})
+    response = {'english':word.english, 'mandarin':word.mandarin}
+    print(response)
+    return JsonResponse(response)
+
+def check_answer(request, *args, **kwargs):
+    answer = request.POST.get('data')
+    print(answer)

@@ -5,4 +5,5 @@ app_name ='api'
 
 urlpatterns = [
     path('', views.get_word, name="get_word"),
+    path('check_answer/', views.check_answer, name="check_answer"),
 ]

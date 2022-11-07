@@ -1,30 +1,33 @@
 import Word from './Word'
 import AnswerForm from './AnswerForm'
 import Skip from './Skip'
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Playground = (props) => {
+
+const Playground = () => {
+    const [english, setEnglish] = useState('')
+    const [mandarin, setMandarin] = useState('')
 
     useEffect(() => {
-        console.log('here!');
         axios({
             method: 'get',
             url: 'http://127.0.0.1:8000/api/',
             headers: { 'Content-Type': 'multipart/form-data' },
           })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((response) => {
+          .then((response) => {
+            const data = response.data;
+            setMandarin(data.mandarin);
+          })
+          .catch((response) => {
             console.error(response);
-        });
-        console.log('end useEffect');
+          });
       }, []);
 
     return <div>
-    <Word word={props.word} />
-    <AnswerForm />
+    <div>Timer</div>
+    <Word word={mandarin} />
+    <AnswerForm word={mandarin}/>
     <Skip />
     </div>;
 };
