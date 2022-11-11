@@ -2,7 +2,8 @@ import styles from '../../styles/components/Playground/AnswerForm.module.scss'
 import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import cookie from 'js-cookie';
+import cookies from 'js-cookie';
+
 
 
 const AnswerForm = (props) => {
@@ -19,7 +20,6 @@ const AnswerForm = (props) => {
                 'X-Requested-With': 'XMLHttpRequest',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRFToken': cookies.load("csrftoken"),
             },
             method: 'post', 
             url: 'http://127.0.0.1:8000/api/check_answer/', 

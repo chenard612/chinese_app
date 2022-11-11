@@ -1,6 +1,7 @@
 import Word from './Word'
 import AnswerForm from './AnswerForm'
 import Skip from './Skip'
+import Timer from './Timer'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -25,7 +26,7 @@ const Playground = () => {
       }, []);
 
     return <div>
-    <div>Timer</div>
+    <Timer />
     <Word word={mandarin} />
     <AnswerForm word={mandarin}/>
     <Skip />
