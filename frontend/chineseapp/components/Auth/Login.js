@@ -6,16 +6,22 @@ const Login = (props) => {
 
     return <div className={styles.main}>
                 <div className={styles.title}>
-                    LOGIN
+                    VOC
                 </div>
                 <div className={styles.container}>
+                    <div className={styles.form_instructions}>Please enter your credential below:</div>
                     <form className={styles.form}>
                         <input type="hidden" name="csrfmiddlewaretoken"  />
+                        <label>Email:</label>
                         <input className={styles.inputField} type='input'></input>
-                        <input className={styles.inputField} type='input'></input>
+                        <label>Password:</label>
+                        <input className={styles.inputField} type='password'></input>
                         <input className={styles.button} type="submit" />
                     </form>
-                </div>    
+                <div className={styles.form_instructions}>
+                    Not a member? Sign Up here
+                </div>
+                </div>
             </div>;
 };
     

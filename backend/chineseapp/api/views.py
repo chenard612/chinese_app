@@ -19,3 +19,6 @@ def get_word(request, *args, **kwargs):
 def check_answer(request, *args, **kwargs):
     answer = request.POST.get('data')
     print(answer)
+
+
+
