@@ -1,10 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+.vscode/
+__pycache__/
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
 
+/.env
+*/.env
 # testing
 /coverage
 
@@ -36,5 +39,8 @@ yarn-error.log*
 next-env.d.ts
 node_modules
 node_modules
+<<<<<<< HEAD
 node_modules
 node_modules
+=======
+>>>>>>> 44ac32fe6308d5108a2851d95215029a9483c9c5
