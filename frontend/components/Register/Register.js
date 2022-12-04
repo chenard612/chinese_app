@@ -28,6 +28,8 @@ const Register = (props) => {
         })
         .then((response) => {
             console.log('Done!');
+            const token = response.data.token;
+            console.log(token);
         })
         .catch((response) => {
             console.error(response);

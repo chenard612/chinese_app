@@ -1,6 +1,6 @@
 import cookie from 'cookie';
 import axios from 'axios';
-import config from '../../utils/fetchUrl';
+
 
 export default function handler(req, res) {
     const access = req['body']['access'];

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import UserManager
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
@@ -16,6 +17,8 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
+
+    objects = UserManager()
 
     # notice the absence of a "Password field", that is built in.
 

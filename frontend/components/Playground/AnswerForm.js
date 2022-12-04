@@ -3,18 +3,18 @@ import { useForm } from "react-hook-form";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import cookies from 'js-cookie';
-
+import cookieCutter from 'cookie-cutter'
 
 
 const AnswerForm = (props) => {
     const [answer, setAnswer] = useState("");
+    const [visible, setVisible] = useState();
     const { register, handleSubmit } = useForm();
     const word = props.word;
-
+    const vocab_id = props.vocab_id;
 
     const onSubmit = handleSubmit((data) => {
-        console.log(answer, word);
-        const newData = JSON.stringify(answer);
+        const newData = {"answer":answer, "word":word, 'vocab_id':vocab_id};
         axios({ 
             headers :{
                 'X-Requested-With': 'XMLHttpRequest',
@@ -26,6 +26,10 @@ const AnswerForm = (props) => {
             data: newData
         })
         .then((response) => {
+            console.log(response);
+            if (response.data.success == false){
+                console.log('we should display the right answer here');       
+            }
         })
         .catch((response) => {
             console.error(response);

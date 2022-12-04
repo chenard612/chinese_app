@@ -7,8 +7,9 @@ import axios from 'axios';
 
 
 const Playground = () => {
-    const [english, setEnglish] = useState('')
-    const [mandarin, setMandarin] = useState('')
+    const [english, setEnglish] = useState('');
+    const [mandarin, setMandarin] = useState('');
+    const [vocab_id, setVocab_id] = useState('');
 
     useEffect(() => {
         axios({
@@ -19,6 +20,7 @@ const Playground = () => {
           .then((response) => {
             const data = response.data;
             setMandarin(data.mandarin);
+            setVocab_id(data.vocab_id);
           })
           .catch((response) => {
             console.error(response);
@@ -28,7 +30,7 @@ const Playground = () => {
     return <div>
     <Timer />
     <Word word={mandarin} />
-    <AnswerForm word={mandarin}/>
+    <AnswerForm word={mandarin} id={vocab_id}/>
     <Skip />
     </div>;
 };

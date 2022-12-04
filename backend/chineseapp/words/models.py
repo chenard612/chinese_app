@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Word(models.Model):
@@ -13,3 +14,14 @@ class Word(models.Model):
     pinyin = models.CharField(max_length=240, default="")
     used_in_a_sentence = models.CharField(max_length=240, default="")
 
+    def __str__(self):
+        return '{} | {} | {}'.format(self.english, self.mandarin, self.arabic)
+
+class Vocabulary(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='vocabulary_user', null=True)
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='vocabulary_user', null=True)
+    repetition = models.IntegerField(default=0)
+    finished = models.BooleanField(default=False, null=True)
+    deleted = models.BooleanField(default=False, null=True)
+
+    
