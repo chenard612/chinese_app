@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 

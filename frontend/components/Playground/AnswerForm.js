@@ -28,7 +28,9 @@ const AnswerForm = (props) => {
         .then((response) => {
             console.log(response);
             if (response.data.success == false){
-                console.log('we should display the right answer here');       
+                location.href = '/wrong';     
+            }else{
+                location.href = '/right';
             }
         })
         .catch((response) => {

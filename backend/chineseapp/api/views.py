@@ -32,11 +32,9 @@ def check_answer(request, *args, **kwargs):
     json_object = json.loads(data)
     word = Word.objects.get(mandarin=json_object['word'])
     if word.english == json_object['answer']:
-        print('Good Answer!')
-        return JsonResponse({'response':'here', 'success':True})
+        return JsonResponse({'success':True})
     else:
-        print('wrong!')
-        return JsonResponse({'response':'here', 'success':False, 'answer':word.english})
+        return JsonResponse({'success':False, 'word_id':word.id})
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
