@@ -1,13 +1,14 @@
 .container{
-    background-color: #F88379;
+    background-color: greenyellow;
     border-radius:15px;
-    border: 3px solid red;
+    border: 3px solid green;
     height: 500px;
     width:300px;
     text-align: center;
 }
-.x{
-    font-size: 500%;
+.check{
+    margin-top:10%;
+    font-size: 400%;
 }
 .word{
     font-size: 250%;
@@ -15,6 +16,7 @@
 .text1{
     margin-top:2%;
     font-size: 150%;
+    margin-bottom:15%;
 }
 .text2{
     margin-top:10%;

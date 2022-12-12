@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Progress = () => {
     
+    function PrograssPage() {
+        window.location.href = '/menu/';
+    }
+
     return  <div className={styles.compartment}>
-                <i className="bi bi-graph-up-arrow"></i>
+                <i onClick={PrograssPage} className="bi bi-graph-up-arrow"></i>
             </div>;
 };
 

@@ -25,3 +25,7 @@ class Vocabulary(models.Model):
     deleted = models.BooleanField(default=False, null=True)
 
     
+class Question(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question_user', null=True)
+    word = models.ForeignKey(Word, on_delete=models.CASCADE, related_name='question_word', null=True)
+    success = models.BooleanField(default=False, null=True)

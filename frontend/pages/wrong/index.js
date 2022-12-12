@@ -4,6 +4,7 @@ import styles from '../../styles/Home.module.scss'
 import NavBar from '../../components/Navbar/NavBar'
 import Footer from '../../components/Footer/Footer'
 import Wrong from '../../components/Wrong/Wrong'
+import NextQ from '../../components/Wrong/NextQ'
 
 
 export default function Home(props) {
@@ -18,6 +19,7 @@ export default function Home(props) {
       <NavBar />
       <main className={styles.main}>
           <Wrong />
+          <NextQ />
       </main>
       <Footer />
     </div>

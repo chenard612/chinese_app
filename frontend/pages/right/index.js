@@ -3,8 +3,8 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.scss'
 import NavBar from '../../components/Navbar/NavBar'
 import Footer from '../../components/Footer/Footer'
-import Wrong from '../../components/Right/Right'
-
+import Right from '../../components/Right/Right'
+import NextQ from '../../components/Wrong/NextQ'
 
 export default function Home(props) {
 
@@ -18,6 +18,7 @@ export default function Home(props) {
       <NavBar />
       <main className={styles.main}>
           <Right />
+          <NextQ />
       </main>
       <Footer />
     </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from words.models import Word, Vocabulary
+from words.models import Word, Vocabulary, Question
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import requests
@@ -21,6 +21,9 @@ def get_word(request, *args, **kwargs):
     # response = {'english':word.english, 'mandarin':word.mandarin, 'vocab_id':vocab.id}
     word = Word.objects.exclude(mandarin='').order_by('?').first()
     print(word)
+    new_question = Question(word=word)
+    new_question.save()
+    print(new_question)
     response = {'english':word.english, 'mandarin':word.mandarin, 'vocab_id':word.id}
     return JsonResponse(response)
 
@@ -32,9 +35,29 @@ def check_answer(request, *args, **kwargs):
     json_object = json.loads(data)
     word = Word.objects.get(mandarin=json_object['word'])
     if word.english == json_object['answer']:
+        question = Question.objects.order_by('-id').first()
+        question.success = True
+        question.save()
         return JsonResponse({'success':True})
     else:
+        print(word)
         return JsonResponse({'success':False, 'word_id':word.id})
+
+@csrf_exempt
+def get_wrong_answer(request, *args, **kwargs):
+    question = Question.objects.order_by('-id').first()
+    if question.success == False:
+        word = question.word
+        response = {'english':word.english, 'mandarin':word.mandarin, 'vocab_id':word.id}
+        return JsonResponse(response)
+
+@csrf_exempt
+def get_right_answer(request, *args, **kwargs):
+    question = Question.objects.order_by('-id').first()
+    if question.success == True:
+        word = question.word
+        response = {'english':word.english, 'mandarin':word.mandarin, 'vocab_id':word.id}
+        return JsonResponse(response)
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod

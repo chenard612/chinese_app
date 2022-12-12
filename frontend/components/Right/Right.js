@@ -1,16 +1,16 @@
 
 import { useEffect, useState } from 'react';
-import styles from '../../styles/components/Wrong/Wrong.module.scss'
+import styles from '../../styles/components/Right/Right.module.scss'
 import axios from 'axios';
 
-const Wrong = (props) => {
+const Right = (props) => {
     const [english, setEnglish] = useState('');
     const [mandarin, setMandarin] = useState('');
 
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://127.0.0.1:8000/api/wrong_answer',
+            url: 'http://127.0.0.1:8000/api/right_answer',
             headers: { 'Content-Type': 'multipart/form-data' },
           })
           .then((response) => {
@@ -25,9 +25,8 @@ const Wrong = (props) => {
       }, []);
 
     return <div className={styles.container}>
-    <div className={styles.x}>X</div>
-    <div className={styles.text1}>Wrong Answer!</div>
-    <div className={styles.text2}>Expected:</div>
+    <div className={styles.check}><div className="bi bi-check-circle"></div></div>
+    <div className={styles.text1}>Right Answer!</div>
     <div className={styles.word}>{english}</div>
     <hr className={styles.lineBreak}></hr>
     <div className={styles.word}>{mandarin}</div>
@@ -36,4 +35,4 @@ const Wrong = (props) => {
     </div>
 };
     
-export default Wrong;
+export default Right;
